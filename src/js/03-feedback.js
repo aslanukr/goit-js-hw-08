@@ -26,8 +26,8 @@ function populateUserForm() {
 
   if (savedFormData) {
     userFormData = parsedFormData;
-    refs.email.value = parsedFormData.email;
-    refs.message.value = parsedFormData.message;
+    refs.email.value = parsedFormData.email || '';
+    refs.message.value = parsedFormData.message || '';
   }
 }
 
@@ -37,6 +37,7 @@ function handleFormSubmit(e) {
     console.log(userFormData);
     localStorage.removeItem(USER_FORM_KEY);
     e.target.reset();
+    userFormData = {};
     return;
   }
   alert(`All fields must be filled!`);
